@@ -5,25 +5,25 @@ import numpy as np
 import cv2 as cv
 
 
-def find_lanes(frame,frame_post_mask):
+def find_lanes(frame,frame_post_mask,limits):
     img= frame_post_mask.copy()
     ret, thresh = cv.threshold(img, 127, 255, 0)
     img_canny = cv.Canny(thresh,100,200,2)
     
-    contours, hierarchy  = cv.findContours(img_canny, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
-    
+    _,contours, hierarchy  = cv.findContours(img_canny, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+    print(limits[1])
     for i in contours:
-        if cv.arcLength(i,False)>200:
+        if cv.arcLength(i,False)>limits[1]:
             cv.drawContours(frame, [i], -1, (0,255,0), 3)
             # cv.namedWindow('contours',cv.WINDOW_NORMAL)
             # cv.imshow('contours',img)
-            print(cv.arcLength(i,False))
+            # print(cv.arcLength(i,False))
 
-        # if 1000>cv.arcLength(i,False)>100:
-        #     cv.drawContours(frame, [i], -1, (0,0,255), 3)
+        if limits[0]> cv.arcLength(i,False) > limits[1]:
+            cv.drawContours(frame, [i], -1, (0,0,255), 3)
         # cv.namedWindow('contours',cv.WINDOW_NORMAL)
         # cv.imshow('contours',img)
-            # print(cv.arcLength(i,False))
+            print(cv.arcLength(i,False))
     return frame
 
 
