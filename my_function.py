@@ -13,13 +13,13 @@ def find_lanes(frame,frame_post_mask,limits):
     _,contours, hierarchy  = cv.findContours(img_canny, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     print(limits[1])
     for i in contours:
-        if cv.arcLength(i,False)>limits[1]:
+        # if cv.arcLength(i,False)>limits[1]:
             cv.drawContours(frame, [i], -1, (0,255,0), 3)
             # cv.namedWindow('contours',cv.WINDOW_NORMAL)
             # cv.imshow('contours',img)
-            # print(cv.arcLength(i,False))
+            print(cv.arcLength(i,False))
 
-        if limits[0]> cv.arcLength(i,False) > limits[1]:
+        # if limits[0]> cv.arcLength(i,False) > limits[1]:
             cv.drawContours(frame, [i], -1, (0,0,255), 3)
         # cv.namedWindow('contours',cv.WINDOW_NORMAL)
         # cv.imshow('contours',img)
