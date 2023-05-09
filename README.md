@@ -31,7 +31,7 @@ pipeline better.
 ![](https://github.com/Sri-Sai-Charan/Lane-detection/blob/main/output/problem_3_output.gif)
 
 ## Folder Structure
-
+```
 📦Lane-detection
  ┣ 📂media
  ┃ ┣ 📜problem_2.mp4
@@ -44,3 +44,6 @@ pipeline better.
  ┣ 📜histogram_equalization.py
  ┣ 📜straight_lines.py
  ┗ 📜turn_prediction.py
+ ```
+ 
+
